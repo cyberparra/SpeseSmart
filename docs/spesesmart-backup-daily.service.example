@@ -1,0 +1,35 @@
+# PREPARED ONLY. No installation/activation by npm. See backup-tecnico-raspberry.md.
+# Install the verified coordinator as root-owned code at the fixed path below.
+[Unit]
+Description=SpeseSmart backup tecnico giornaliero con manutenzione controllata
+RequiresMountsFor=@mount@
+After=@mountUnit@
+BindsTo=@mountUnit@
+# No RequiresMountsFor USB and no dependency on the production service:
+# absence fails BEFORE stopping it. A preexisting RO USB is required.
+
+[Service]
+Type=oneshot
+User=root
+WorkingDirectory=@app@
+ExecStart=/usr/bin/python3 -I -B /usr/local/libexec/spesesmart/pi-backup-coordinator.py
+UMask=0077
+Restart=no
+TimeoutStartSec=35min
+TimeoutStopSec=60
+KillMode=control-group
+KillSignal=SIGTERM
+SendSIGKILL=no
+NoNewPrivileges=true
+# Mount lifecycle MUST operate in the host mount namespace. Do not add
+# PrivateMounts/PrivateTmp/ProtectSystem/ProtectHome/*Paths, which would hide the
+# host's real USB mount state. The installed root guard verifies PID1's namespace.
+# All backup/data/config processing still drops privileges via runuser.
+# Even an accidental SDK call has no IP connectivity. AF_UNIX permits systemd DBus;
+# AF_NETLINK permits ss observations. No changes to host firewall/routing.
+RestrictAddressFamilies=AF_UNIX AF_NETLINK
+IPAddressDeny=any
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=spesesmart-backup-daily
+LimitCORE=0

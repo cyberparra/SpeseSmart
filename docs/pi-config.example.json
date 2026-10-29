@@ -1,0 +1,10 @@
+{
+  "mount": "/srv/spesesmart",
+  "ssdUUID": "SOSTITUIRE-CON-UUID-SSD",
+  "ip": "192.168.1.50",
+  "tlsDirectory": "/srv/spesesmart/tls/current",
+  "caSHA256": "SOSTITUIRE-CON-IMPRONTA-SHA256-CA",
+  "user": "spesesmart",
+  "home": "/home/spesesmart",
+  "node": "/usr/local/bin/node"
+}

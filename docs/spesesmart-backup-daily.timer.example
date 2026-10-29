@@ -1,0 +1,10 @@
+# PREPARED ONLY: install/enable only after a separate activation authorization.
+[Unit]
+Description=SpeseSmart backup tecnico giornaliero
+[Timer]
+OnCalendar=*-*-* 03:15:00 Europe/Rome
+Persistent=false
+AccuracySec=1min
+Unit=spesesmart-backup-daily.service
+[Install]
+WantedBy=timers.target

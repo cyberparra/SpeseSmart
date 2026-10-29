@@ -1,0 +1,180 @@
+{
+  "description": "Modello strutturale senza dati o credenziali. Copiare le righe iniziali nelle proprie schede, in ordine.",
+  "sheets": [
+    {
+      "title": "Movimenti",
+      "columns": 60,
+      "rows": [
+        [
+          "ID movimento",
+          "ID documento",
+          "Data",
+          "Tipo",
+          "Descrizione",
+          "Esercente",
+          "Categoria",
+          "Importo EUR",
+          "Origine",
+          "Stato",
+          "Note",
+          "Creato il",
+          "UtenteID",
+          "SpeseSmart hash",
+          "SpeseSmart operazione",
+          "SpeseSmart JSON 1"
+        ]
+      ]
+    },
+    {
+      "title": "Prodotti",
+      "columns": 60,
+      "rows": [
+        [
+          "ID riga",
+          "ID documento",
+          "Descrizione originale",
+          "Prodotto normalizzato",
+          "Quantità",
+          "Prezzo totale EUR",
+          "Categoria proposta",
+          "Categoria confermata",
+          "Confidenza",
+          "Note",
+          "UtenteID",
+          "SpeseSmart hash",
+          "SpeseSmart operazione",
+          "SpeseSmart JSON 1"
+        ]
+      ]
+    },
+    {
+      "title": "Documenti",
+      "columns": 60,
+      "rows": [
+        [
+          "ID documento",
+          "Tipo documento",
+          "Data acquisto",
+          "Esercente",
+          "Totale EUR",
+          "Totale categorizzato EUR",
+          "Differenza EUR",
+          "URL immagine",
+          "Stato",
+          "Testo estratto",
+          "Creato il",
+          "UtenteID",
+          "SpeseSmart hash",
+          "SpeseSmart operazione",
+          "SpeseSmart JSON 1"
+        ]
+      ]
+    },
+    {
+      "title": "Categorie",
+      "columns": 60,
+      "rows": [
+        [
+          "Categoria",
+          "Macrocategoria",
+          "Attiva",
+          "Indicazioni per AI"
+        ],
+        [
+          "Alimentari",
+          "Spese",
+          "Sì",
+          "Supermercato, mercato, alimenti e bevande destinati al consumo domestico."
+        ],
+        [
+          "Casa e Pulizia",
+          "Spese",
+          "Sì",
+          "Detersivi, detergenti, prodotti per la pulizia, carta casa e piccoli articoli domestici."
+        ],
+        [
+          "Salute e Benessere",
+          "Spese",
+          "Sì",
+          "Visite mediche, dentista, farmacia, farmaci e prodotti sanitari."
+        ],
+        [
+          "Trasporti",
+          "Spese",
+          "Sì",
+          "Carburante, pedaggi, parcheggi, taxi, sharing e trasporti quotidiani."
+        ],
+        [
+          "Cura della Persona",
+          "Spese",
+          "Sì",
+          "Parrucchiere, barbiere, prodotti per l'igiene personale e cosmetica."
+        ],
+        [
+          "Tempo Libero e Socialità",
+          "Spese",
+          "Sì",
+          "Ristoranti, bar, aperitivi, cene fuori, colazioni e pause caffè."
+        ],
+        [
+          "Hobby e Intrattenimento",
+          "Spese",
+          "Sì",
+          "Videogiochi, libri, cinema, concerti, sport e palestre."
+        ],
+        [
+          "Shopping e Abbigliamento",
+          "Spese",
+          "Sì",
+          "Vestiti, scarpe, accessori e piccoli acquisti tecnologici."
+        ],
+        [
+          "Utenze e Abbonamenti digitali",
+          "Spese",
+          "Sì",
+          "Bollette di luce, gas e acqua, telefonia, Internet, Netflix, Spotify, Amazon Prime, iCloud e riviste digitali."
+        ],
+        [
+          "Viaggi e Vacanze",
+          "Spese",
+          "Sì",
+          "Weekend, voli, hotel e spostamenti turistici."
+        ],
+        [
+          "Regali e Donazioni",
+          "Spese",
+          "Sì",
+          "Festività, compleanni, regali e beneficenza."
+        ],
+        [
+          "Animali",
+          "Spese",
+          "Sì",
+          "Cibo per animali domestici, crocchette, lettiere, veterinario, medicinali veterinari, antiparassitari, giochi e accessori per animali."
+        ],
+        [
+          "Manutenzioni Ristrutturazioni",
+          "Spese",
+          "Sì",
+          "Riparazioni, manutenzione e ristrutturazione della casa: lavori, manodopera e materiali edili."
+        ],
+        [
+          "Da classificare",
+          "Spese",
+          "Sì",
+          "Solo per spese non classificate con sicurezza."
+        ]
+      ]
+    },
+    {
+      "title": "LEGGIMI",
+      "columns": 4,
+      "rows": [
+        [
+          "SpeseSmart",
+          "Archivio personale multiutente; nessun dato iniziale."
+        ]
+      ]
+    }
+  ]
+}

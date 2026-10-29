@@ -1,0 +1,43 @@
+# Generato da npm run pi:install -- service; non installare i segnaposto.
+[Unit]
+Description=SpeseSmart Raspberry HTTPS multiutente
+Wants=network-online.target
+After=network-online.target @mountUnit@
+RequiresMountsFor=@mount@
+BindsTo=@mountUnit@
+StartLimitIntervalSec=600
+StartLimitBurst=3
+
+[Service]
+Type=exec
+User=@user@
+Group=@user@
+WorkingDirectory=@app@
+Environment=HOME=@home@
+Environment=PATH=/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+Environment=NODE_ENV=production
+Environment=NEXT_TELEMETRY_DISABLED=1
+Environment=SPESESMART_PI_CONFIG=@configPath@
+ExecCondition=@node@ --conditions=react-server --import tsx scripts/pi-service-check.mts
+ExecStart=@node@ scripts/lan-server.mjs pi-production
+Restart=on-failure
+RestartSec=30
+TimeoutStartSec=120
+KillMode=mixed
+KillSignal=SIGTERM
+TimeoutStopSec=360
+UMask=0077
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=read-only
+ReadWritePaths=@mount@ @home@/.local/share/spesesmart/runtime
+ReadOnlyPaths=@mount@/tls @app@/scripts @app@/src @app@/public @app@/node_modules
+ReadOnlyPaths=@app@/package.json @app@/package-lock.json @data@/production.env @data@/credentials
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=spesesmart-pi
+LimitCORE=0
+
+[Install]
+WantedBy=multi-user.target

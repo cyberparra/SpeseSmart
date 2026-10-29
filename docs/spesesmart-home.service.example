@@ -1,0 +1,35 @@
+# Example only: NOT installed, enabled or started by the project.
+# Confirm User, HOME, Node path, data paths and mounts before installing.
+[Unit]
+Description=SpeseSmart HTTPS LAN domestica production
+Wants=network-online.target
+After=network-online.target
+RequiresMountsFor=/srv/spesesmart/app /home/spesesmart/.local/share/spesesmart
+StartLimitIntervalSec=300
+StartLimitBurst=3
+
+[Service]
+Type=simple
+User=spesesmart
+WorkingDirectory=/srv/spesesmart/app
+Environment=HOME=/home/spesesmart
+Environment=PATH=/home/spesesmart/.nvm/versions/node/v24.18.0/bin:/usr/local/bin:/usr/bin:/bin
+ExecStart=/home/spesesmart/.nvm/versions/node/v24.18.0/bin/node scripts/lan-server.mjs production
+Restart=on-failure
+RestartSec=10
+# Signal only the launcher first; it drains the detached backend before stopping it.
+KillMode=mixed
+KillSignal=SIGTERM
+TimeoutStopSec=310
+UMask=0077
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=read-only
+ReadWritePaths=/srv/spesesmart/app/.next /home/spesesmart/.local/share/spesesmart
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=spesesmart
+
+[Install]
+WantedBy=multi-user.target
